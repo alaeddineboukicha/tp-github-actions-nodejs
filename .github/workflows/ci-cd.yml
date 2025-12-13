@@ -40,7 +40,7 @@ jobs:
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-app:latest .
 
       - name: Push Docker Image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-app:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-app:latest .
 
   deploy:
     needs: build-and-push
