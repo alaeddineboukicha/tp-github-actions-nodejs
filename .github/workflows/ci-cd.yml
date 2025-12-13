@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches: ["main"]
-  
+  pull_request:
 
 jobs:
   test:
@@ -49,11 +49,11 @@ jobs:
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          password: ${{ secrets.VPS_PASSWORD }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             docker stop devops-app || true
             docker rm devops-app || true
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devops-app:latest
-            docker run -d --name devops-app -p 6001:3000 ${{ secrets.DOCKERHUB_USERNAME }}/devops-app:latest
+            docker run -d --name devops-app -p 6002:3000 ${{ secrets.DOCKERHUB_USERNAME }}/devops-app:latest
