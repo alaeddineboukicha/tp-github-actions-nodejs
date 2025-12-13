@@ -20,6 +20,8 @@ jobs:
 
       - run: node ./node_modules/jest/bin/jest.js --runInBand
 
+      
+
   build-and-push:
     needs: test
     runs-on: ubuntu-latest
@@ -35,7 +37,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-app:latest
+          tags: alaeddineboukcicha/devops-app:latest
 
   deploy:
     needs: build-and-push
