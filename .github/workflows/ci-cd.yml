@@ -20,6 +20,15 @@ jobs:
 
       - run: node ./node_modules/jest/bin/jest.js --runInBand
 
+      - name: Check DockerHub username secret
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ]; then
+            echo "ERROR: DOCKERHUB_USERNAME secret is empty or missing"
+              exit 1
+          else
+          echo "OK: DOCKERHUB_USERNAME is set"
+           fi
+
       
 
   build-and-push:
