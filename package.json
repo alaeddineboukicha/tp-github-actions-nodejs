@@ -1,26 +1,11 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-  "test":  "npx jest",
-  "start": "node server.js"
-},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alaeddineboukicha/tp-github-actions-nodejs.git"
+    "test": "node ./node_modules/jest/bin/jest.js --runInBand",
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alaeddineboukicha/tp-github-actions-nodejs/issues"
-  },
-  "homepage": "https://github.com/alaeddineboukicha/tp-github-actions-nodejs#readme",
   "dependencies": {
     "express": "^5.2.1"
   },
